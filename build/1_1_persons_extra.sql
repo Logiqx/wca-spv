@@ -9,8 +9,7 @@ CREATE TABLE PersonsExtra
     countryName VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
     continentName VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
     gender CHAR(1) COLLATE utf8_unicode_ci NOT NULL,
-    regYear SMALLINT(4) NOT NULL,
-    PRIMARY KEY (id)
+    regYear SMALLINT(4) NOT NULL
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -24,3 +23,7 @@ INNER JOIN  Countries c1 ON c1.id = p.countryId
 INNER JOIN  Continents c2 ON c2.id = c1.continentId
 WHERE       p.subId = 1
 GROUP BY    p.id;
+
+-- Add primary key
+ALTER TABLE PersonsExtra ADD PRIMARY KEY (id);
+

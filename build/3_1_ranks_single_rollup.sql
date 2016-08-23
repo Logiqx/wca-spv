@@ -13,8 +13,7 @@ CREATE TABLE RanksSingleWorldRollup
     eventId VARCHAR(6) COLLATE utf8_unicode_ci NOT NULL,
     best INT NOT NULL DEFAULT 0,
     numRank INT NOT NULL DEFAULT 0,
-    maxRank INT NOT NULL DEFAULT 0,
-    PRIMARY KEY (eventId)
+    maxRank INT NOT NULL DEFAULT 0
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -25,8 +24,7 @@ CREATE TABLE RanksSingleContinentRollup
     continentName VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
     best INT NOT NULL DEFAULT 0,
     numRank INT NOT NULL DEFAULT 0,
-    maxRank INT NOT NULL DEFAULT 0,
-    PRIMARY KEY (eventId, continentName)
+    maxRank INT NOT NULL DEFAULT 0
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -37,8 +35,7 @@ CREATE TABLE RanksSingleCountryRollup
     countryName VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
     best INT NOT NULL DEFAULT 0,
     numRank INT NOT NULL DEFAULT 0,
-    maxRank INT NOT NULL DEFAULT 0,
-    PRIMARY KEY (eventId, countryName)
+    maxRank INT NOT NULL DEFAULT 0
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
     
@@ -61,3 +58,9 @@ SELECT      eventId, countryName, MIN(best) AS best, COUNT(countryRank) AS numRa
 FROM        RanksSingle r
 INNER JOIN  PersonsExtra p ON p.id = r.personId
 GROUP BY    eventId, countryName;
+
+-- Add primary keys
+ALTER TABLE RanksSingleWorldRollup ADD PRIMARY KEY (eventId);
+ALTER TABLE RanksSingleContinentRollup ADD PRIMARY KEY (eventId, continentName);
+ALTER TABLE RanksSingleCountryRollup ADD PRIMARY KEY (eventId, countryName);
+

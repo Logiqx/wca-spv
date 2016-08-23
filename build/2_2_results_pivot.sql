@@ -310,8 +310,7 @@ CREATE TABLE ResultsPivot
     numAverageCr333mbf SMALLINT DEFAULT 0 NOT NULL,
     numSingleNr333mbf SMALLINT DEFAULT 0 NOT NULL,
     numAverageNr333mbf SMALLINT DEFAULT 0 NOT NULL,
-    totTime333mbf BIGINT DEFAULT 0 NOT NULL,
-    PRIMARY KEY (personId)
+    totTime333mbf BIGINT DEFAULT 0 NOT NULL
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -624,3 +623,7 @@ SELECT      personId,
             CAST(SUM(IF(eventId = '333mbf', totTime, 0)) AS UNSIGNED INT) AS totTime333mbf
 FROM        ResultsRollup
 GROUP BY    personId;
+
+-- Add primary key
+ALTER TABLE ResultsPivot ADD PRIMARY KEY (personId);
+

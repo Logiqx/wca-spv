@@ -20,8 +20,7 @@ CREATE TABLE ResultsRollup
     numAverageCr SMALLINT DEFAULT 0 NOT NULL,
     numSingleNr SMALLINT DEFAULT 0 NOT NULL,
     numAverageNr SMALLINT DEFAULT 0 NOT NULL,
-    totTime BIGINT DEFAULT 0 NOT NULL,
-    PRIMARY KEY (personId, eventId)
+    totTime BIGINT DEFAULT 0 NOT NULL
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -49,3 +48,7 @@ FROM        Results
 GROUP BY    personId, eventId;
 
 -- TODO (maybe) - calculate totTime for '333mbf', '333mbo'
+
+-- Add primary key
+ALTER TABLE ResultsRollup ADD PRIMARY KEY (personId, eventId);
+
