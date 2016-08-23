@@ -150,7 +150,8 @@ CREATE TABLE RanksAveragePivot
     countryRank333mbf INT DEFAULT 0 NOT NULL,
     worldCentile333mbf TINYINT DEFAULT 0 NOT NULL,
     continentCentile333mbf TINYINT DEFAULT 0 NOT NULL,
-    countryCentile333mbf TINYINT DEFAULT 0 NOT NULL
+    countryCentile333mbf TINYINT DEFAULT 0 NOT NULL,
+    PRIMARY KEY (personId)
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -304,6 +305,6 @@ SELECT      personId,
 FROM        RanksAverageExtra
 GROUP BY    personId;
 
--- Add primary key
-ALTER TABLE RanksAveragePivot ADD PRIMARY KEY (personId);
+-- Update statistics
+ANALYZE TABLE RanksAveragePivot;
 

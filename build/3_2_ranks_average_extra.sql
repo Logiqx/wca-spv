@@ -12,7 +12,8 @@ CREATE TABLE RanksAverageExtra
     countryRank INT DEFAULT 0 NOT NULL,
     worldCentile TINYINT DEFAULT 0 NOT NULL,
     continentCentile TINYINT DEFAULT 0 NOT NULL,
-    countryCentile TINYINT DEFAULT 0 NOT NULL
+    countryCentile TINYINT DEFAULT 0 NOT NULL,
+    PRIMARY KEY (personId, eventId)
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -34,6 +35,6 @@ INNER JOIN  RanksAverageWorldRollup r1 ON r1.eventId = r.eventId
 INNER JOIN  RanksAverageContinentRollup r2 ON r2.eventId = r.eventId AND r2.continentName = p.continentName
 INNER JOIN  RanksAverageCountryRollup r3 ON r3.eventId = r.eventId AND r3.countryName = p.countryName;
 
--- Add primary key
-ALTER TABLE RanksAverageExtra ADD PRIMARY KEY (personId, eventId);
+-- Update statistics
+ANALYZE TABLE RanksAverageExtra;
 

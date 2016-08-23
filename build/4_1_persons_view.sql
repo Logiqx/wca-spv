@@ -567,7 +567,8 @@ CREATE TABLE PersonsView
     countryRankAverage333mbf INT DEFAULT 0 NOT NULL,
     worldCentileAverage333mbf TINYINT DEFAULT 0 NOT NULL,
     continentCentileAverage333mbf TINYINT DEFAULT 0 NOT NULL,
-    countryCentileAverage333mbf TINYINT DEFAULT 0 NOT NULL
+    countryCentileAverage333mbf TINYINT DEFAULT 0 NOT NULL,
+    PRIMARY KEY (id)
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1135,6 +1136,6 @@ LEFT JOIN   RanksSinglePivot rs ON rs.personId = p.id
 LEFT JOIN   RanksAveragePivot ra ON ra.personId = p.id
 LEFT JOIN   ResultsPivot r ON r.personId = p.id;
 
--- Add primary key
-ALTER TABLE PersonsView ADD PRIMARY KEY (id);
+-- Update statistics
+ANALYZE  TABLE PersonsView;
 

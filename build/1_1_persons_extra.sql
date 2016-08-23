@@ -9,7 +9,8 @@ CREATE TABLE PersonsExtra
     countryName VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
     continentName VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
     gender CHAR(1) COLLATE utf8_unicode_ci NOT NULL,
-    regYear SMALLINT(4) NOT NULL
+    regYear SMALLINT(4) NOT NULL,
+    PRIMARY KEY (id)
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -24,6 +25,6 @@ INNER JOIN  Continents c2 ON c2.id = c1.continentId
 WHERE       p.subId = 1
 GROUP BY    p.id;
 
--- Add primary key
-ALTER TABLE PersonsExtra ADD PRIMARY KEY (id);
+-- Update statistics
+ANALYZE TABLE PersonsExtra;
 

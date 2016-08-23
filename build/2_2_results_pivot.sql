@@ -310,7 +310,8 @@ CREATE TABLE ResultsPivot
     numAverageCr333mbf SMALLINT DEFAULT 0 NOT NULL,
     numSingleNr333mbf SMALLINT DEFAULT 0 NOT NULL,
     numAverageNr333mbf SMALLINT DEFAULT 0 NOT NULL,
-    totTime333mbf BIGINT DEFAULT 0 NOT NULL
+    totTime333mbf BIGINT DEFAULT 0 NOT NULL,
+    PRIMARY KEY (personId)
 )
 ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -624,6 +625,6 @@ SELECT      personId,
 FROM        ResultsRollup
 GROUP BY    personId;
 
--- Add primary key
-ALTER TABLE ResultsPivot ADD PRIMARY KEY (personId);
+-- Update statistics
+ANALYZE TABLE ResultsPivot;
 
