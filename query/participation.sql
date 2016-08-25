@@ -1,5 +1,5 @@
 -- Top 10 competitors who've competed the most times across all events
--- Note: numHours excludes multi-blind
+-- Note: numHours excludes MBLD + FMC
 SELECT      countryName, name, numAttempt, numSuccess, numDns, numDnf,
             TRUNCATE(totTime / 100.0 / 3600, 0) AS numHours
 FROM        PersonsView

@@ -67,7 +67,7 @@ Europe        | Czech Republic | 120        | 22.67            | 27.23
 
 ### Top 10 competitors who've competed the most times across all events
 
-Note: numHours excludes multi-blind
+Note: numHours excludes MBLD + FMC
 
 ```SQL
 SELECT      countryName, name, numAttempt, numSuccess, numDns, numDnf,
