@@ -1,12 +1,41 @@
-# wca-spv
-World Cube Association - Single Person View
+# World Cube Association - Single Person View
+
+The project name "wca-spv" is an abbreviation of "World Cube Association - Single Person View".
+
+
+## Overview
+
+This project started when I wanted to determine the relative solve times for 2x2x2 - 7x7x7. The original thread around this topic can be found on the [Speedsolving.com](https://www.speedsolving.com/forum/threads/relative-solve-times-for-2x2x2-7x7x7.47405/) forum. To determine relative solve times, I needed a simple way to calculate vigintile rankings for the baseline event (i.e. rankings in 5% bands) and some way to correlate times peoples times for different events. Since completing the original investigation the SQL scripts have been tidied up and a few extras have been added to create the WCA SPV.
+
+The WCA SPV is essentially a single table containing one record for each person who has ever competed under the WCA. The results and rankings from the WCA database have been rolled up and pivoted to provide a summarised view for each person. The summary records contain a large number of "facts", summarizing peoples participation and performance in individual events as well as across all events. The main benefits of the summary table are to simplify common analytical queries and assist with queries correlating facts across multiple events. A number of example queries are shown later in this document, demonstrating how the SPV can be utilised.
+
+I've drawn upon my experiences in the workplace where I have been involved in "Single Customer View" projects for a number of UK corporations. The WCA SPV is a lot simpler than a corporate Single Customer View but there are some common principles and themes. Wide tables with lots of columns may seem unusual at first but they can be really useful and effective. The number of people in the WCA is small enough for MySQL to cope with all of the competitors in a single wide table, even on modest hardware. A corporate SCV often contains information about 10's to 100's of millions of people and often requires terrabytes of storage, typically employing alternative database technologies (e.g. column-oriented DBMS). There are far less people in the WCA SPV!
+
+These scripts have been tested on MySql 5.7.12 (OS X) and MySql 5.5.1.9 (Windows 7). The build time is about 45 seconds on my Macbook Pro running MySQL 5.7.12.
+
+
+## Import the WCA database
+
+If you've never imported the WCA database you can do so with the following command, substituting the database name and username:
+
+```code
+mysql --database=MYSQL_DATABASE --user=MYSQL_USERNAME --password --execute="source WCA_export.sql" --default-character-set=utf8
+```
+
+Note: The above command will prompt for a password.
+
+
+## Build the SPV
+
+1. Edit build\_all.bat (Windows) or build\_all.sh (Linux / Mac), setting MYSQL\_DATABASE and MYSQL\_USERNAME to match your database.
+2. Run build\_all.bat (Windows) or build\_all.sh (Linux / Mac) and wait for it to run all of the SQL scripts. It'll probably take 45-90 seconds, depending on your hardware and the version of MySQL.
 
 
 # Example Queries
 
-Note: The output from the example queries below was last updated 2016-08-17
+Note: The output from the example queries below related to the WCA export from 2016-08-17.
 
-## fastest_333.sql
+## fastest\_333.sql
 
 ### Countries ranked by their fastest 3x3x3 solver
 
@@ -117,7 +146,7 @@ Poland      | Krzysztof Szwarc        | 107           | 13        | 12.14
 Canada      | Thomas Henderson        | 145           | 17        | 11.72     
 
 
-## relative_solve_times.sql
+## relative\_solve\_times.sql
 
 ### 4x4x4 VS 3x3x3 (World)
 
@@ -156,7 +185,7 @@ vigintile | numPersons | avg444 | avg333 | factor
 100       | 559        | 212.63 | 34.69  | 6.12   
 
 
-## world_records.sql
+## world\_records.sql
 
 ### Countries with the most world records
 
