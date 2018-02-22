@@ -1,3 +1,7 @@
+-- Add primary key to the rankings for required join performance
+ALTER TABLE RanksSingle ADD PRIMARY KEY(personId, eventId);
+ANALYZE TABLE RanksSingle;
+
 -- Drop the existing world rollup table
 DROP TABLE IF EXISTS RanksSingleWorldRollup;
 
