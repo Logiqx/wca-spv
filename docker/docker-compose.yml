@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mysql:
+    build:
+      context: ./mysql
+      args:
+        MYSQL_VERSION: ${MYSQL_VERSION}
+    image: ${COMPOSE_PROJECT_NAME:-wca}_mysql:${PROJECT_MYSQL_VERSION:-latest}-mysql-${MYSQL_VERSION:-latest}
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_RANDOM_ROOT_PASSWORD: "true"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ${PROJECT_ROOT}:/home/jovyan/work
+      - db:/var/lib/mysql
+volumes:
+  db:
