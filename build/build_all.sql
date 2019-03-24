@@ -1,3 +1,4 @@
+source 0_0_create_indices.sql;
 source 1_1_persons_extra.sql;
 source 2_1_results_rollup.sql;
 source 2_2_results_pivot.sql;
