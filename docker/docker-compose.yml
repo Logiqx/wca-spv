@@ -12,7 +12,6 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ${PROJECT_ROOT}:/home/jovyan/work
       - db:/var/lib/mysql
 volumes:
   db:
