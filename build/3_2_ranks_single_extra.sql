@@ -4,8 +4,8 @@ DROP TEMPORARY TABLE IF EXISTS RanksSingleTemp;
 -- Create the ranks temporary table to include centiles
 CREATE TEMPORARY TABLE RanksSingleTemp
 (
-    personId VARCHAR(10) COLLATE utf8_unicode_ci NOT NULL,
-    eventId VARCHAR(6) COLLATE utf8_unicode_ci NOT NULL,
+    personId VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    eventId VARCHAR(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     best INT DEFAULT 0 NOT NULL,
     worldRank INT DEFAULT 0 NOT NULL,
     continentRank INT DEFAULT 0 NOT NULL,
@@ -40,8 +40,8 @@ DROP TABLE IF EXISTS RanksSingleExtra;
 -- Create the ranks extra table to include centiles
 CREATE TABLE RanksSingleExtra
 (
-    personId VARCHAR(10) COLLATE utf8_unicode_ci NOT NULL,
-    eventId VARCHAR(6) COLLATE utf8_unicode_ci NOT NULL,
+    personId VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    eventId VARCHAR(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     best INT DEFAULT 0 NOT NULL,
     worldRank INT DEFAULT 0 NOT NULL,
     continentRank INT DEFAULT 0 NOT NULL,
@@ -62,9 +62,9 @@ SELECT      r.personId,
             r.worldRank,
             r.continentRank,
             r.countryRank,
-            CEILING(100.0 * r.worldRank / r1.maxRank) AS worldCentile,
-            CEILING(100.0 * r.continentRank / r2.maxRank) AS continentCentile,
-            CEILING(100.0 * r.countryRank / r3.maxRank) AS countryCentile
+            CEILING(100.0 * r.worldRank / r1.numPersons) AS worldCentile,
+            CEILING(100.0 * r.continentRank / r2.numPersons) AS continentCentile,
+            CEILING(100.0 * r.countryRank / r3.numPersons) AS countryCentile
 FROM        RanksSingleTemp r
 INNER JOIN  RanksSingleWorldRollup r1 ON r.eventId = r1.eventId
 INNER JOIN  RanksSingleContinentRollup r2 ON r2.eventId = r.eventId AND r2.continentName = r.continentName

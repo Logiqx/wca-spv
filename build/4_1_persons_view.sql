@@ -6,11 +6,11 @@ DROP TABLE IF EXISTS PersonsView;
 -- Create the SPV table... one record per person, bringing together results and rankings
 CREATE TABLE PersonsView
 (
-    id VARCHAR(10) COLLATE utf8_unicode_ci NOT NULL,
-    name VARCHAR(80) COLLATE utf8_unicode_ci NOT NULL,
-    countryName VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
-    continentName VARCHAR(50) COLLATE utf8_unicode_ci NOT NULL,
-    gender CHAR(1) COLLATE utf8_unicode_ci NOT NULL,
+    id VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    name VARCHAR(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    countryName VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    continentName VARCHAR(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    gender CHAR(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     regYear SMALLINT(4) NOT NULL,
     -- totals for all events
     numComp SMALLINT DEFAULT 0 NOT NULL,

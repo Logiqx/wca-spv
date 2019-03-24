@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS ResultsPivot;
 -- Create the results pivot table... one record per person
 CREATE TABLE ResultsPivot
 (
-    personId VARCHAR(10) COLLATE utf8_unicode_ci NOT NULL,
+    personId VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     -- totals for all events
     numComp SMALLINT DEFAULT 0 NOT NULL,
     numFinal SMALLINT DEFAULT 0 NOT NULL,

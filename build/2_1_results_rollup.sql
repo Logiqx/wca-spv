@@ -4,8 +4,8 @@ DROP TABLE IF EXISTS ResultsRollup;
 -- Create the rollup table which is essentially a load of simple counts
 CREATE TABLE ResultsRollup
 (
-    personId VARCHAR(10) COLLATE utf8_unicode_ci NOT NULL,
-    eventId VARCHAR(6) COLLATE utf8_unicode_ci NOT NULL,
+    personId VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    eventId VARCHAR(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     numComp SMALLINT DEFAULT 0 NOT NULL,
     numFinal SMALLINT DEFAULT 0 NOT NULL,
     numPodium SMALLINT DEFAULT 0 NOT NULL,

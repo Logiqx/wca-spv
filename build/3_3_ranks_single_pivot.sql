@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS RanksSinglePivot;
 -- Create the ranks pivot table... one record per person
 CREATE TABLE RanksSinglePivot
 (
-    personId VARCHAR(10) COLLATE utf8_unicode_ci NOT NULL,
+    personId VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
     -- 333
     best333 INT DEFAULT 0 NOT NULL,
     worldRank333 INT DEFAULT 0 NOT NULL,
