@@ -6,7 +6,8 @@ SELECT      CEIL(worldCentileAverage444 / 5.0) * 5 AS vigintile, COUNT(*) AS num
 FROM        PersonsView
 WHERE       worldCentileAverage444 > 0
 AND         worldCentileAverage333 > 0
-GROUP BY    vigintile;
+GROUP BY    vigintile
+ORDER BY    vigintile;
 
 SELECT      TRUNCATE(AVG(bestAverage444 / bestAverage333), 2) AS mean
 FROM        PersonsView
@@ -27,7 +28,8 @@ SELECT      CEIL(worldCentile444 / 5.0) * 5 AS vigintile, COUNT(*) AS numPersons
 FROM        RanksAveragePivot
 WHERE       worldCentile444 > 0
 AND         worldCentile333 > 0
-GROUP BY    vigintile;
+GROUP BY    vigintile
+ORDER BY    vigintile;
 
 SELECT      TRUNCATE(AVG(best444 / best333), 2) AS mean
 FROM        RanksAveragePivot
@@ -49,7 +51,8 @@ FROM        PersonsView
 WHERE       countryName = 'United Kingdom'
 AND         countryCentileAverage444 > 0
 AND         countryCentileAverage333 > 0
-GROUP BY    vigintile;
+GROUP BY    vigintile
+ORDER BY    vigintile;
 
 SELECT      TRUNCATE(AVG(bestAverage444 / bestAverage333), 2) AS mean
 FROM        PersonsView
@@ -74,7 +77,8 @@ JOIN        PersonsExtra p ON p.id = r.personId
 WHERE       countryName = 'United Kingdom'
 AND         worldCentile444 > 0
 AND         worldCentile333 > 0
-GROUP BY    vigintile;
+GROUP BY    vigintile
+ORDER BY    vigintile;
 
 SELECT      TRUNCATE(AVG(best444 / best333), 2) AS mean
 FROM        RanksAveragePivot r
