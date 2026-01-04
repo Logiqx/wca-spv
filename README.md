@@ -2,6 +2,8 @@
 
 The project name "wca-spv" is an abbreviation of "World Cube Association - Single Person View".
 
+IMPORTANT - This project was created for the original WCA results export where table names used PascalCase and column names used camelCase. The latest WCA results export uses snake_case for table and column names, but wca-spv has not been updated yet.
+
 
 ## Overview
 
